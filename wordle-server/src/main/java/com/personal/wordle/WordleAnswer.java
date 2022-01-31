@@ -3,6 +3,8 @@ package com.personal.wordle;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -123,14 +125,38 @@ public class WordleAnswer {
           "polka", "rayon", "skirt", "faith", "torso", "match", "mercy", "tepid", "sleek", "riser", "twixt", "peace", "flush", "catty", "login", "eject", "roger", "rival", "untie", "refit", "aorta",
           "adult", "judge", "rower", "artsy", "rural", "shave");
 
+  public static int getDifferenceDays(java.util.Date d1, java.util.Date d2) {
+    int daysdiff = 0;
+    long diff = d2.getTime() - d1.getTime();
+    long diffDays = diff / (24 * 60 * 60 * 1000) + 1;
+    daysdiff = (int) diffDays;
+    return daysdiff;
+  }
+
   public static void main(String[] args) {
     Javalin app = Javalin.create().start(7070);
-    app.get("/wordle/{day}", ctx -> {
-      // some code
-      int index = Integer.parseInt(ctx.pathParam("day"));
-      log.info(wordList.get(index));
-      ctx.json(wordList.get(index));
-    });
+//    app.get("/wordle/{day}", ctx -> {
+//      // some code
+//      int index = Integer.parseInt(ctx.pathParam("day"));
+//      log.info(wordList.get(index));
+//      ctx.json(wordList.get(index));
+//    });
 
+    app.get("/wordle/v2", ctx -> {
+        long ts = Long.valueOf(ctx.queryParam("ts"));
+        int slNum = Integer.parseInt(ctx.queryParam("slNum"));
+
+        if(slNum != 0) {
+          ctx.json(wordList.get(slNum));
+        }
+        else {
+          java.util.Date givenDate=new java.util.Date(ts*1000);
+          java.util.Date startDate = new java.util.Date(1624106486000L);
+
+          int index = getDifferenceDays(startDate, givenDate);
+          ctx.json(wordList.get(index));
+        }
+
+    });
   }
 }
