@@ -1,6 +1,6 @@
 ## Usage
 
-1. Run as Java server
+## 1. Run as Java server
 ```
 1. Run `cd wordle-server`
 2. Package into jar: `mvn clean package`
@@ -8,7 +8,7 @@
 4. Perform GET request on the path `localhost:7070/wordle/v2?ts=<timestamp>&slNum=<wordleDay>`
 ```
 
-## Example
+### Example
 
 `curl --location --request GET 'localhost:7070/wordle/v2?ts=1643632424&slNum=0'`
 
@@ -16,7 +16,7 @@
 
 `light`
 
-2. Run as React app
+## 2. Run as React app
 ```
 1. Run `cd wordle-webapp`
 2. Run `npm run dev`
