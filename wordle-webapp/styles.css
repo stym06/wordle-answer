@@ -1,0 +1,12 @@
+body {
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+      'Arial', sans-serif;
+    /* background-color: #474b4d; */
+  }
+
+  .center {
+    margin: auto;
+    width: 50%;
+    border: 0px solid green;
+    padding: 10px;
+  }
