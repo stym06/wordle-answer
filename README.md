@@ -1,5 +1,6 @@
 ## Usage
 
+1. Run as Java server
 ```
 1. Run `cd wordle-server`
 2. Package into jar: `mvn clean package`
@@ -14,3 +15,13 @@
 ### Output
 
 `light`
+
+2. Run as React app
+```
+1. Run `cd wordle-webapp`
+2. Run `npm run dev`
+3. Open http://localhost:3000
+```
+
+![alt text](./wordle-webapp/resources/wordle-demo.png)
+
