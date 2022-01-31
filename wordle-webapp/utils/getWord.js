@@ -119,8 +119,13 @@ export default function getWord(req_ts, req_slNum) {
         ts = req_ts;
     if(req_slNum != undefined)
         slNum = req_slNum;
+    
+    var lastNum = wordList.length-1;
     if(slNum != 0) {
-        return wordList[slNum].toUpperCase()
+        if(slNum <0 || slNum > lastNum) 
+            return wordList[lastNum].toUpperCase();
+        else
+            return wordList[slNum].toUpperCase()
     }
     else {
         var givenDate = new Date(ts);
@@ -129,7 +134,9 @@ export default function getWord(req_ts, req_slNum) {
         var diffTime = Math.abs(givenDate-startDate);
         var daysDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         
-        console.log(wordList[daysDiff-1]);
-        return wordList[daysDiff-1].toUpperCase()
+        if(daysDiff < 0 || daysDiff > lastNum) 
+            return wordList[lastNum].toUpperCase()
+        else
+            return wordList[daysDiff].toUpperCase()
     }
 }
