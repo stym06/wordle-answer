@@ -1,11 +1,12 @@
 ## Usage
 
-Run `com.personal.wordle.WordleAnswer` class with CLI argument being the Day of the Wordle
+1. Run server: `java -cp com.personal.wordle.WordleAnswer`
+2. Perform GET request on the path `localhost:7070/wordle/{day}`
 
 ## Example
 
-`java -cp com.personal.wordle.WordleAnswer 226`
+`curl --location --request GET 'localhost:7070/wordle/226'`
 
 ### Output
 
-`2022-01-31T14:54:20.528 INFO  com.personal.wordle.WordleAnswer - light`
+`light`
